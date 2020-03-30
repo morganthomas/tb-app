@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const indexController = require('./controllers/index');
-const api = require('./api');
+const apiController = require('./controllers/api');
 
 const port = 3000;
 
@@ -12,9 +12,7 @@ app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
-app.get('/blog/:blog', function (req, res) {
-    api.getBlog(req.params.blog);
-});
+app.get('/blog/:blog', apiController.blog);
 app.get('/templates/:template', indexController.template);
 app.get('/', indexController.index);
 
