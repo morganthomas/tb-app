@@ -1,0 +1,21 @@
+extends layout
+
+block header
+  link(rel="stylesheet" href="/stylesheets/index.css")
+
+block content
+  .container.page(ng-app="tbApp" ng-controller="indexController")
+    h1 TB-App
+    div.controls
+      div
+        input(type="text" ng-model="blog")
+        span .tumblr.com
+      div
+        button(ng-click="load()") Load
+
+block scripts
+  script(src="/scripts/lib/lodash.js")
+  script(src="/scripts/lib/jquery.min.js")
+  script(src="/scripts/lib/angular.min.js")
+  script(src="/scripts/lib/angular-route.min.js")
+  script(src="/scripts/app.js")
