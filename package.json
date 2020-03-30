@@ -4,7 +4,8 @@
   "description": "An app for viewing Tumblr blogs",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "node app.js",
+    "prod": "forever restart app.js"
   },
   "repository": {
     "type": "git",
