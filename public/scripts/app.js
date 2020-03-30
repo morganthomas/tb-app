@@ -23,7 +23,7 @@ tbApp.controller('indexController', ['$scope', '$sce', function ($scope, $sce) {
 tbApp.config(function($routeProvider) {
     $routeProvider
 	.when('/', {
-	    templateUrl: '/templates/index',
+	    templateUrl: '/',
 	    controller: 'indexController'
 	});
 });
