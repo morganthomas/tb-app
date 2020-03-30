@@ -27,6 +27,10 @@ const blogSchema = mongoose.Schema({
     }
 });
 
+blogSchema.query.byName = function (name) {
+    return this.where({ name });
+}
+
 const Blog = mongoose.model('blog', blogSchema);
 
 module.exports = Blog;
