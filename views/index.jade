@@ -12,6 +12,12 @@ block content
         span .tumblr.com
       div
         button(ng-click="load()") Load
+    div.posts
+       div.post(ng-repeat="post in posts")
+         div.post-body(ng-bind-html="post.body")
+         a.photo(ng-href="{{post.postUrl}}")
+           img(ng-src="{{post.photoUrl}}")
+         span.caption(ng-bind-html="post.caption")
 
 block scripts
   script(src="/scripts/lib/lodash.js")

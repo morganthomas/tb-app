@@ -3,11 +3,15 @@ const mongoose = require('mongoose');
 const postSchema = mongoose.Schema({
     photoUrl: {
         type: String,
-        required: true
+        required: false
     },
     caption: {
         type: String,
-        required: true
+        required: false
+    },
+    body: {
+        type: String,
+        required: false
     },
     postUrl: {
         type: String,

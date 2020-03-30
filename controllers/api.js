@@ -9,6 +9,7 @@ function xmlJsonToBlog (json) {
         if (name) {
             const postsXmlJson = tumblr.posts && tumblr.posts[0] && tumblr.posts[0].post;
             if (postsXmlJson && postsXmlJson.map) {
+                console.log(`got ${postsXmlJson.length} posts`);
                 const posts = postsXmlJson.map(xmlJsonToPost).filter(x => x !== null);
                 return new Blog({ name, posts });
             }
@@ -17,7 +18,6 @@ function xmlJsonToBlog (json) {
     return null;
 }
 
-// this may not work for non-photo posts
 function xmlJsonToPost (json) {
     const $ = json.$;
     const captionArray = json['photo-caption'];
@@ -30,7 +30,14 @@ function xmlJsonToPost (json) {
         if (photoUrl) {
             return { photoUrl, caption, postUrl };
         }
+    } else if ($ && $.url) {
+        const postUrl = $.url;
+        const body = json['regular-body'];
+        if (body && body.join) {
+            return { body: body.join(''), postUrl };
+        }
     }
+    console.log('Could not extract data from a post json: ' + JSON.stringify(json));
     return null;
 }
 

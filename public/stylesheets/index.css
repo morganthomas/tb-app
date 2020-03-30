@@ -1,3 +1,38 @@
 body {
     padding: 0;
 }
+
+h1 {
+    text-align: center;
+}
+
+.controls {
+    border-bottom: 5px solid black;
+    padding: 50px;
+    margin: 50px;
+}
+
+.post {
+    display: inline-block;
+    margin: 25px;
+    vertical-align: middle;
+    width: 350px;
+    border: 1px solid black;
+    overflow: auto;
+    width: 400px;
+    height: 400px;
+}
+
+.photo {
+    text-align: center;
+}
+
+.photo img {
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.caption {
+    max-width: 400px;
+    max-height: 50px;
+}
