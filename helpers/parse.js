@@ -38,6 +38,4 @@ function xmlJsonToPost (json) {
     return null;
 }
 
-if (typeof module !== 'undefined') {
-    module.exports = { xmlJsonToBlog, xmlJsonToPost };
-}
+module.exports = { xmlJsonToBlog, xmlJsonToPost };
