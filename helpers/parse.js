@@ -8,7 +8,7 @@ function xmlJsonToBlog (json) {
             if (postsXmlJson && postsXmlJson.map) {
                 console.log(`got ${postsXmlJson.length} posts`);
                 const posts = postsXmlJson.map(xmlJsonToPost).filter(x => x !== null);
-                return new Blog({ name, posts });
+                return { name, posts };
             }
         }
     }

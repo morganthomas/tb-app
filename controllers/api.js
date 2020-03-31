@@ -11,7 +11,7 @@ module.exports = {
                 res.send(blogs[0]);
             } else {
                 api.getBlog(req.params.blog, function (xmlJson) {
-                    const blog = xmlJsonToBlog(xmlJson);
+                    const blog = new Blog(xmlJsonToBlog(xmlJson));
                     res.send(blog);
                     blog.save();
                 });
