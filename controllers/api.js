@@ -1,4 +1,4 @@
-const api = require('../api');
+const api = require('../helpers/api');
 const Blog = require('../models/blog');
 const { xmlJsonToBlog } = require('../helpers/parse');
 
