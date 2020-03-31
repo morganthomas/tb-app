@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "serve": "node app.js",
-    "prod": "forever restart app.js"
+    "prod": "forever restart app.js",
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
