@@ -24,5 +24,14 @@
     "jade": "^1.11.0",
     "mongoose": "^5.9.7",
     "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "jasmine-core": "^3.5.0",
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-jasmine": "^3.1.1",
+    "karma-requirejs": "^1.1.0",
+    "karma-verbose-reporter": "0.0.6",
+    "requirejs": "^2.3.6"
   }
 }
