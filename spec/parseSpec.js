@@ -59,3 +59,42 @@ describe('xmlJsonToBlog', function () {
                                 { postUrl: 'bletch', body: 'snarf' } ] });
     });
 });
+
+describe('xmlJsonToPost', function () {
+    it('produces null when there is no url', function () {
+        expect(xmlJsonToPost({ 'photo-caption': ['bar'], 'photo-url': [{ _: 'baz' }] }))
+            .toBe(null);
+
+        expect(xmlJsonToPost({ 'photo-caption': ['bar'],
+                               'photo-url': [{ _: 'baz' }],
+                               $: { } })).toBe(null);
+    });
+
+    it('produces null when there is a url and a photo but no caption array', function () {
+        expect(xmlJsonToPost({ $: { url: 'abc' },
+                               'photo-caption': null,
+                               'photo-url': [{ _: 'def' }] })).toBe(null);
+    });
+
+    it('produces null when there is a url and a caption but no photo', function () {
+        expect(xmlJsonToPost({ $: { url: 'abc' },
+                               'photo-caption': ['def'],
+                               'photo-url': null })).toBe(null);
+    });
+
+    it('produces null when there is nothing but a url', function () {
+        expect(xmlJsonToPost({ $: { url: 'abc' } })).toBe(null);
+    });
+
+    it('parses if there is a url and a photo', function () {
+        expect(xmlJsonToPost({ $: { url: 'abc' },
+                               'photo-caption': [],
+                               'photo-url': [{ _: 'ghi' }] }))
+            .toEqual({ postUrl: 'abc', caption: '', photoUrl: 'ghi' });
+    });
+
+    it('parses if there is a url and a body array', function () {
+        expect(xmlJsonToPost({ $: { url: 'abc' }, 'regular-body': [] }))
+            .toEqual({ postUrl: 'abc', body: '' });
+    });
+});
