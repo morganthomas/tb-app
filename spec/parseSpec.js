@@ -42,4 +42,20 @@ describe('xmlJsonToBlog', function () {
             .toEqual({ name: 'foo', posts: [] });
 
     });
+
+    it('parses an xml json with two posts which parse and one post which does not parse', function () {
+        expect(xmlJsonToBlog({
+            tumblr: {
+                tumblelog: [ { $: { name: 'foo' } } ],
+                posts: [ { post: [
+                    { },
+                    { $: { url: 'foo' },
+                      'photo-caption': [ 'b', 'ar' ],
+                      'photo-url': [ { _: 'baz' } ] },
+                    { $: { url: 'bletch' },
+                      'regular-body': [ 's', 'n', 'arf' ] } ] } ] } }))
+            .toEqual({ name: 'foo',
+                       posts: [ { postUrl: 'foo', caption: 'bar', photoUrl: 'baz' },
+                                { postUrl: 'bletch', body: 'snarf' } ] });
+    });
 });
